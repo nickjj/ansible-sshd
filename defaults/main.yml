@@ -18,7 +18,7 @@ sshd_pubkey_authentication: yes
 sshd_authorized_keys_file: "%h/.ssh/authorized_keys"
 sshd_ignore_rhosts: yes
 sshd_rhosts_rsa_authentication: no
-sshd_hostbased_authentication: no
+sshd_host_based_authentication: no
 sshd_ignore_user_known_hosts: no
 sshd_permit_empty_passwords: no
 sshd_challenge_response_authentication: no
