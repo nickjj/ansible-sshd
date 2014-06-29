@@ -30,7 +30,7 @@ sshd_permit_root_login: no
 sshd_strict_modes: yes
 sshd_rsa_authentication: yes
 sshd_pubkey_authentication: yes
-sshd_authorized_keys_file: %h/.ssh/authorized_keys
+sshd_authorized_keys_file: "%h/.ssh/authorized_keys"
 sshd_ignore_rhosts: yes
 sshd_rhosts_rsa_authentication: no
 sshd_host_based_authentication: no
