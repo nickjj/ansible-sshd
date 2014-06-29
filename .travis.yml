@@ -27,4 +27,3 @@ script:
     | grep -q 'PasswordAuthentication no'
     && (echo 'Prevent password authentication test: pass' && exit 0)
     || (echo 'Prevent password authentication test: fail' && exit 1)
-  - sudo cat /etc/ssh/sshd_config
