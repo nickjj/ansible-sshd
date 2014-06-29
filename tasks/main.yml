@@ -8,3 +8,6 @@
   template: src=etc/ssh/sshd_config.j2 dest=/etc/ssh/sshd_config
   notify:
     - restart ssh
+
+- name: ensure ssh server starts on a fresh reboot
+  service: name=ssh state=started enabled=yes
