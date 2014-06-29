@@ -18,12 +18,12 @@ script:
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
   - >
-    sudo cat /etc/ssh/sshd_conf
+    sudo cat /etc/ssh/sshd_config
     | grep -q 'PermitRootLogin no'
     && (echo 'Block root login test: pass' && exit 0)
     || (echo 'Block root login test: fail' && exit 1)
   - >
-    sudo cat /etc/ssh/sshd_conf
+    sudo cat /etc/ssh/sshd_config
     | grep -q 'PasswordAuthentication no'
     && (echo 'Prevent password authentication test: pass' && exit 0)
     || (echo 'Prevent password authentication test: fail' && exit 1)
