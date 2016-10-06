@@ -1,10 +1,11 @@
 ---
-- name: ensure ssh server is installed
-  apt: pkg=openssh-server state=latest update_cache=true cache_valid_time={{ apt_cache_valid_time }}
-  notify:
-    - restart ssh
 
-- name: ensure sshd is configured
+- name: Install SSH server
+  apt: pkg=openssh-server state=present
+  notify:
+    - Restart SSH
+
+- name: Configure SSHD
   template: src=etc/ssh/sshd_config.j2 dest=/etc/ssh/sshd_config
   notify:
-    - restart ssh
+    - Restart SSH

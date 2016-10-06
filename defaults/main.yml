@@ -1,4 +1,5 @@
 ---
+
 sshd_port: "22"
 sshd_listen_address: "0.0.0.0"
 sshd_protocol: "2"
@@ -35,5 +36,3 @@ sshd_banner: "none"
 sshd_accept_env: "LANG LC_*"
 sshd_subsystem: "sftp /usr/lib/openssh/sftp-server"
 sshd_use_pam: "yes"
-
-apt_cache_valid_time: 86400

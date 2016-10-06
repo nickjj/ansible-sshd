@@ -1,19 +1,13 @@
-## WARNING: This role will be deprecated very soon
-
-All of the functionality provided by this role and more is available in the [DebOps project](http://debops.org). If you are using some of my roles in conjunction with each other, you will find the move to DebOps most pleasurable.
-
-This role will be **removed** from the **galaxy** and from **github** anywhere from 42 microseconds to 2-3 weeks after you read this message.
-
----
-
-
 ## What is ansible-sshd? [![Build Status](https://secure.travis-ci.org/nickjj/ansible-sshd.png)](http://travis-ci.org/nickjj/ansible-sshd)
 
-It is an [ansible](http://www.ansible.com/home) role to install openssh-server and configure it.
+It is an [Ansible](http://www.ansible.com/home) role to install openssh-server
+and configure it.
 
 ### What problem does it solve and why is it useful?
 
-Often times you want to disable root logins and password based logins. This role sets those options by default but it also exposes every config value found in the default ubuntu 12.04 `sshd_config` file.
+Often times you want to disable root logins and password based logins. This
+role sets those options by default but it also exposes every config value found
+in the default Ubuntu `sshd_config` file.
 
 ## Role variables
 
@@ -59,30 +53,32 @@ sshd_banner: "none"
 sshd_accept_env: "LANG LC_*"
 sshd_subsystem: "sftp /usr/lib/openssh/sftp-server"
 sshd_use_pam: "yes"
-
-# The amount in seconds to cache apt-update.
-apt_cache_valid_time: 86400
 ```
 
 ## Example playbook
 
-For the sake of this example let's assume you have a group called **app** and you have a typical `site.yml` file.
+For the sake of this example let's assume you have a group called **app** and
+you have a typical `site.yml` file.
 
 To use this role edit your `site.yml` file to look something like this:
 
 ```
 ---
-- name: ensure app servers are configured
+
+- name: Configure app server(s)
 - hosts: app
 
   roles:
     - { role: nickjj.sshd, tags: sshd }
 ```
 
-Let's say you want to edit a few values, you can do this by opening or creating `group_vars/app.yml` which is located relative to your `inventory` directory and then making it look something like this:
+Let's say you want to edit a few values, you can do this by opening or creating
+`group_vars/app.yml` which is located relative to your `inventory` directory
+and then making it look something like this:
 
 ```
 ---
+
 sshd_port: 1337
 ```
 
@@ -94,9 +90,11 @@ sshd_port: 1337
 
 Tested on ubuntu 12.04 LTS but it should work on other versions that are similar.
 
-## Ansible galaxy
+## Ansible Galaxy
 
-You can find it on the official [ansible galaxy](https://galaxy.ansible.com/list#/roles/1078) if you want to rate it.
+You can find it on the official
+[Ansible Galaxy](https://galaxy.ansible.com/list#/roles/1078) if you want to
+rate it.
 
 ## License
 
