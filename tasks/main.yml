@@ -1,11 +1,15 @@
 ---
 
 - name: Install SSH server
-  apt: pkg=openssh-server state=present
+  apt:
+    pkg: 'openssh-server'
+    state: 'present'
   notify:
     - Restart SSH
 
 - name: Configure SSHD
-  template: src=etc/ssh/sshd_config.j2 dest=/etc/ssh/sshd_config
+  template:
+    src: 'etc/ssh/sshd_config.j2'
+    dest: '/etc/ssh/sshd_config'
   notify:
     - Restart SSH
