@@ -3,6 +3,11 @@
 It is an [Ansible](http://www.ansible.com/home) role to install openssh-server
 and configure it.
 
+##### Supported platforms:
+
+- Ubuntu 16.04 LTS (Xenial)
+- Debian 8 (Jessie)
+
 ### What problem does it solve and why is it useful?
 
 Often times you want to disable root logins and password based logins. This
@@ -86,10 +91,6 @@ sshd_port: 1337
 ## Installation
 
 `$ ansible-galaxy install nickjj.sshd`
-
-## Requirements
-
-Tested on ubuntu 12.04 LTS but it should work on other versions that are similar.
 
 ## Ansible Galaxy
 
