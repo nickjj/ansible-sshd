@@ -1,7 +1,7 @@
 ---
 
 sshd_port: '22'
-sshd_listen_address: '0.0.0.0'
+sshd_listen_address: ['::', '0.0.0.0']
 sshd_protocol: '2'
 sshd_host_rsa_key: '/etc/ssh/ssh_host_rsa_key'
 sshd_host_dsa_key: '/etc/ssh/ssh_host_dsa_key'

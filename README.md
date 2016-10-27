@@ -23,7 +23,10 @@ Below is a list of default values along with a description of what they do.
 # http://www.openssh.com/cgi-bin/man.cgi?query=sshd_config
 
 sshd_port: '22'
-sshd_listen_address: '0.0.0.0'
+
+# Listen on all IPv6 and IPv4 addresses.
+sshd_listen_address: ['::', '0.0.0.0']
+
 sshd_protocol: '2'
 sshd_host_rsa_key: '/etc/ssh/ssh_host_rsa_key'
 sshd_host_dsa_key: '/etc/ssh/ssh_host_dsa_key'

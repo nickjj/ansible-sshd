@@ -1,7 +1,9 @@
 # {{ ansible_managed }}
 
 Port {{ sshd_port }}
-ListenAddress {{ sshd_listen_address }}
+{% for address in sshd_listen_address %}
+  ListenAddress {{ address }}
+{% endfor %}
 Protocol {{ sshd_protocol }}
 HostKey {{ sshd_host_rsa_key }}
 HostKey {{ sshd_host_dsa_key }}
