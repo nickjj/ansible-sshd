@@ -1,5 +1,11 @@
 # Changelog
 
+### v0.2.3
+
+*Released: October 27th 2016*
+
+- Listen on all IPv6 and IPv4 ports by default
+
 ### v0.2.2
 
 *Released: October 7th 2016*
