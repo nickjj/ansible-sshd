@@ -1,19 +1,23 @@
 ---
 
 galaxy_info:
-  author: Nick Janetakis
-  description: Install and configure openssh-server.
+  author: "Nick Janetakis"
+  description: "Install and configure openssh-server."
   company:
-  license: license MIT
-  min_ansible_version: 2.0
+  license: "license (MIT)"
+  min_ansible_version: 2.4
 
   platforms:
-  - name: Ubuntu
-    versions:
-    - all
+    - name: "Ubuntu"
+      versions:
+        - "xenial"
+    - name: "Debian"
+      versions:
+        - "jessie"
+        - "stretch"
 
   categories:
-  - networking
-  - system
+    - "networking"
+    - "system"
 
 dependencies: []

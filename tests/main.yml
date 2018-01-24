@@ -1,11 +1,29 @@
 ---
 
-- hosts: all
+- hosts: "all"
 
   pre_tasks:
     - name: Update APT cache
       apt:
         update_cache: True
 
+    - name: Ensure /etc/ssh/sshd_config contains 'PermitRootLogin no'
+      lineinfile:
+        path: "/etc/ssh/sshd_config"
+        line: "PermitRootLogin no"
+        state: "present"
+      check_mode: True
+      register: presence
+      failed_when: (presence | changed) or (presence | failed)
+
+    - name: Ensure /etc/ssh/sshd_config contains 'PasswordAuthentication no'
+      lineinfile:
+        path: "/etc/ssh/sshd_config"
+        line: "PasswordAuthentication no"
+        state: "present"
+      check_mode: True
+      register: presence
+      failed_when: (presence | changed) or (presence | failed)
+
   roles:
-    - this_role
+    - "role_under_test"

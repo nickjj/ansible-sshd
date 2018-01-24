@@ -2,12 +2,18 @@
 
 Port {{ sshd_port }}
 {% for address in sshd_listen_address %}
-  ListenAddress {{ address }}
+ListenAddress {{ address }}
 {% endfor %}
+{% if sshd_allow_groups %}
+AllowGroups {{ sshd_allow_groups | unique | join(" ") }}
+{% endif %}
 Protocol {{ sshd_protocol }}
-HostKey {{ sshd_host_rsa_key }}
-HostKey {{ sshd_host_dsa_key }}
-HostKey {{ sshd_host_ecdsa_key }}
+{% for key in sshd_host_keys %}
+HostKey /etc/ssh/ssh_host_{{ key }}_key
+{% endfor %}
+KexAlgorithms {{ sshd_kex_algorithms | unique | join(",") }}
+Ciphers {{ sshd_ciphers | unique | join(",") }}
+MACs {{ sshd_macs | unique | join(",") }}
 UsePrivilegeSeparation {{ sshd_use_privilege_separation }}
 KeyRegenerationInterval {{ sshd_key_regeneration_interval }}
 ServerKeyBits {{ sshd_server_key_bits }}

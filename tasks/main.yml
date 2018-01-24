@@ -1,15 +1,29 @@
 ---
 
-- name: Install SSH server
+- name: Install OpenSSH server
   apt:
-    pkg: 'openssh-server'
-    state: 'present'
-  notify:
-    - Restart SSH
+    name: "openssh-server"
+    state: "present"
+    install_recommends: False
+  notify: ["Test and restart SSHD"]
+
+- name: Ensure Ed25519 host key is present
+  command: ssh-keygen -q -t ed25519 -N "" -f ssh_host_ed25519_key
+  args:
+    chdir: "/etc/ssh"
+    creates: "/etc/ssh/ssh_host_ed25519_key"
 
 - name: Configure SSHD
   template:
-    src: 'etc/ssh/sshd_config.j2'
-    dest: '/etc/ssh/sshd_config'
-  notify:
-    - Restart SSH
+    src: "etc/ssh/sshd_config.j2"
+    dest: "/etc/ssh/sshd_config"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  notify: ["Test and restart SSHD"]
+
+- name: Remove block on OpenSSH server startup
+  file:
+    name: "/etc/ssh/sshd_not_to_be_run"
+    state: "absent"
+  notify: ["Test and restart SSHD"]
