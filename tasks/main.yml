@@ -13,7 +13,7 @@
     chdir: "/etc/ssh"
     creates: "/etc/ssh/ssh_host_ed25519_key"
 
-- name: Configure SSHD
+- name: Generate SSHD config
   template:
     src: "etc/ssh/sshd_config.j2"
     dest: "/etc/ssh/sshd_config"
