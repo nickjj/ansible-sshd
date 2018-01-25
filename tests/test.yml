@@ -1,0 +1,23 @@
+---
+
+- hosts: "all"
+
+  roles:
+    - "role_under_test"
+
+  pre_tasks:
+    - name: Update APT cache
+      apt:
+        update_cache: True
+        cache_valid_time: 600
+
+  post_tasks:
+    - name: Ensure /etc/ssh/sshd_config contains 'PermitRootLogin no'
+      command: grep "PermitRootLogin no" /etc/ssh/sshd_config
+      register: result
+      changed_when: result.rc != 0
+
+    - name: Ensure /etc/ssh/sshd_config contains 'PasswordAuthentication no'
+      command: grep "PasswordAuthentication no" /etc/ssh/sshd_config
+      register: result
+      changed_when: result.rc != 0
