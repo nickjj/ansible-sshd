@@ -1,5 +1,16 @@
 # Changelog
 
+### v0.3.0
+
+*Released: January 25th 2018*
+
+- Add `sshd_kex_algorithms`
+- Add `sshd_ciphers`
+- Add `sshd_macs`
+- Change `sshd_server_key_bits` to default to 1024
+- Add proper tests and support for Ubuntu 16, Debian Stretch and Debian Jessie
+- Update format and style consistencies
+
 ### v0.2.3
 
 *Released: October 27th 2016*
